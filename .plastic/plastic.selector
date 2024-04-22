@@ -1,0 +1,4 @@
+repository "Milsim Navigator@unity_A71D30BE57A9A6623E3B@cloud"
+  path "/"
+    br "/main"
+    co "/main"
