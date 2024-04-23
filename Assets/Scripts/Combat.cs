@@ -43,7 +43,7 @@ public class Combat : MonoBehaviour
 
         while (allyHealth > 0 && enemyHealth > 0 && inCombat)
         {
-            Debug.Log("Enemy Health: " + enemyHealth);
+            Debug.Log(gameObject.name + " Health: " + enemyHealth);
             //if not chasing, exit combat cycle
             isChasing = GetComponent<EnemyMovement>().getIsChasingAlly();
             if (!isChasing)

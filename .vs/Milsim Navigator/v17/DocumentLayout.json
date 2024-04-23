@@ -11,12 +11,12 @@
       "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\allydetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|c:\\users\\liamg\\onedrive\\desktop\\technology sandbox\\milsim navigator\\milsim navigator\\assets\\scripts\\allyunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\allyunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\assets\\scripts\\enemymovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemymovement.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|c:\\users\\liamg\\onedrive\\desktop\\technology sandbox\\milsim navigator\\milsim navigator\\assets\\scripts\\allyunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\allyunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\assets\\scripts\\enemyappearance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,7 +46,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "AllyUnits.cs",
               "DocumentMoniker": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\AllyUnits.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\AllyUnits.cs",
@@ -65,7 +65,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\Combat.cs",
               "ToolTip": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\Combat.cs",
               "RelativeToolTip": "Assets\\Scripts\\Combat.cs",
-              "ViewState": "AQIAADoAAAAAAAAAAAAwwDsAAAAiAAAA",
+              "ViewState": "AQIAABYAAAAAAAAAAAAgwC0AAAAlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-16T15:19:56.935Z",
               "EditorCaption": ""
@@ -78,20 +78,20 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\AllyDetection.cs",
               "ToolTip": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\AllyDetection.cs",
               "RelativeToolTip": "Assets\\Scripts\\AllyDetection.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAswDMAAAAUAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAA5AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-14T16:46:00.073Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "EnemyMovement.cs",
               "DocumentMoniker": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\EnemyMovement.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyMovement.cs",
               "ToolTip": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\EnemyMovement.cs",
               "RelativeToolTip": "Assets\\Scripts\\EnemyMovement.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAKMAAAAsAAAA",
+              "ViewState": "AQIAAA8AAAAAAAAAAADwv6MAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-05T16:22:21.222Z",
               "EditorCaption": ""

@@ -1014,9 +1014,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ad51e4a28760041a52f5e90c6de6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infantryDamage: 0
-  armorDamage: 0
-  airDamage: 0
+  infantryDamage: 2
+  armorDamage: 5
+  airDamage: 15
   artilleryDamage: 5
   maxCooldown: 2
 --- !u!114 &493208526
@@ -4280,10 +4280,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyInfantry1
       objectReference: {fileID: 0}
-    - target: {fileID: 7991085832766310343, guid: f01b3103793c7f045992ae47a3fafa2c, type: 3}
-      propertyPath: m_TagString
-      value: EnemyUnit
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4489,10 +4485,6 @@ PrefabInstance:
     - target: {fileID: 2225545828897743632, guid: c1b69a04d888a47409df199409febc7c, type: 3}
       propertyPath: m_Name
       value: EnemyArmor1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2225545828897743632, guid: c1b69a04d888a47409df199409febc7c, type: 3}
-      propertyPath: m_TagString
-      value: EnemyUnit
       objectReference: {fileID: 0}
     - target: {fileID: 4488040448022949513, guid: c1b69a04d888a47409df199409febc7c, type: 3}
       propertyPath: unitScriptHolder
