@@ -34,8 +34,7 @@ public class AllyDetection : MonoBehaviour
     {
         if (!enemyMovement.getIsChasingAlly()) { return; }//prevents collider from checking enemy unit while there is no ally unit in collision box
         if (collision.gameObject.name == enemyToChase.name)
-        {
-            
+        {            
             float distance = Vector3.Distance(enemyToChase.transform.position, gameObject.transform.position);
 
             //rotate sprite towards end point; the ally sprite can move within the enemy engage distance
@@ -58,6 +57,7 @@ public class AllyDetection : MonoBehaviour
 
             if (distance > engageDistance)
             {
+                Debug.Log("Out of range");
                 gameObject.GetComponent<Combat>().exitCombatCycle(false, enemyToChase);
             }
             

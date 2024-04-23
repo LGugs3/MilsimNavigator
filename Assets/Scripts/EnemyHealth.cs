@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
 {
-    [SerializeField] private int health;
+    [SerializeField] private float health;
 
-    public int getHealth()
+    public float getHealth()
     {
         return health;
     }
 
-    public void changeHealth(int amount)
+    public void changeHealth(float amount)
     {
         health += amount;
     }
 
-    public void setHealth(int amount)
+    public void setHealth(float amount)
     {
         health = amount;
     }

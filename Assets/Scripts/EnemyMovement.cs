@@ -20,6 +20,8 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] float viewDistance;
     AllyUnits emptyUnit;
 
+    bool nonMoving;
+
     private void Awake()
     {
         //find which full sprite is the child sprite
@@ -27,6 +29,18 @@ public class EnemyMovement : MonoBehaviour
         tmp = gameObject.transform.Find("Armor");
         if (tmp != null) { fullSprite = tmp; }
         else { fullSprite = gameObject.transform.Find("Infantry"); }
+        nonMoving = false;
+
+        //if the game object is an emplacement
+        if (fullSprite == null)
+        {
+            fullSprite = gameObject.transform.Find("Artillery");
+            nonMoving = true;
+        }
+        if (fullSprite == null)
+        {
+            fullSprite = gameObject.transform.Find("SAM");
+        }
 
         //Blip object is always named the same
         blipSprite = gameObject.transform.Find("Blip");
@@ -37,13 +51,13 @@ public class EnemyMovement : MonoBehaviour
         chasingAlly = false;
         patrolTime = maxPatrolTime;
         corner = 0;
-        changeDirection();
+        if (!nonMoving) { changeDirection(); }
     }
 
     private void Update()
     {
         
-        if (!allyFound)
+        if (!allyFound && !nonMoving)
         {
             patrolTime -= Time.deltaTime;
             if (patrolTime <= 0)
@@ -54,7 +68,7 @@ public class EnemyMovement : MonoBehaviour
                 
                 patrolTime = maxPatrolTime;
             }
-            changeDirection();
+            if (!nonMoving) { changeDirection(); }
             patrolMove();//patrol movement
         }
 
@@ -143,6 +157,12 @@ public class EnemyMovement : MonoBehaviour
 
     public void setLookDirection(Quaternion targetRotation, float rotationSpeed)
     {
+        if (nonMoving) { return; }
         fullSprite.transform.rotation = Quaternion.RotateTowards(fullSprite.transform.rotation, targetRotation, rotationSpeed);
+    }
+
+    public void setChasingAlly(bool chasing)
+    {
+        chasingAlly = chasing;
     }
 }

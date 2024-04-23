@@ -9,7 +9,7 @@ public class AllyUnits : MonoBehaviour
     public GameObject unitScriptHolder;
     SelectUnit unitSelector;
     GameObject[] units;
-    int[] healths;
+    float[] healths;
     int numUnits;
 
     private void Start()
@@ -20,7 +20,7 @@ public class AllyUnits : MonoBehaviour
 
         numUnits = unitSelector.getNumUnits();
         units = new GameObject[numUnits];
-        healths = new int[numUnits];
+        healths = new float[numUnits];
         fillArray();
     }
 
@@ -44,7 +44,7 @@ public class AllyUnits : MonoBehaviour
         return units[index];
     }
 
-    public int getHealth(GameObject unit)
+    public float getHealth(GameObject unit)
     {
         for(int i = 0; i < units.Length; i++)
         {
@@ -74,7 +74,7 @@ public class AllyUnits : MonoBehaviour
         return unitSelector.getToolbarName(name);
     }
 
-    public void setAllyHealth(string unitName, int newHealth)
+    public void setAllyHealth(string unitName, float newHealth)
     {
         int i;
         for(i = 0; i < units.Length; i++)

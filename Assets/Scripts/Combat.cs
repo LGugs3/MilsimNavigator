@@ -10,6 +10,7 @@ public class Combat : MonoBehaviour
     //infantryDamage = 2; armorDamage = 5; airDamage = 15; artilleryDamage = 5; SAM damage instant kill on air
     [SerializeField] private int infantryDamage, armorDamage, airDamage, artilleryDamage;
     [SerializeField] private float maxCooldown;
+    private float bufferDamage;
     private bool inCombat;
     float cooldown;
 
@@ -20,6 +21,7 @@ public class Combat : MonoBehaviour
         cooldown = maxCooldown;
         isChasing = GetComponent<EnemyMovement>().getIsChasingAlly();
         inCombat = false;
+        bufferDamage = 1f;
     }
 
     public void beginCombatCycle()
@@ -34,13 +36,14 @@ public class Combat : MonoBehaviour
     //while both units health are above 0, every cooldown seconds do damage to each other
     IEnumerator CombatCycle(GameObject allyUnit)
     {
-        int allyHealth = gameObject.GetComponent<AllyUnits>().getHealth(GetComponent<AllyDetection>().getChasingAlly());
-        int enemyHealth = gameObject.GetComponent<EnemyHealth>().getHealth();
-        Debug.Log("Enemy health = " + enemyHealth);
-        Debug.Log("ally health = " + allyHealth);
+        System.Random rnd = new System.Random();
+        float allyHealth = gameObject.GetComponent<AllyUnits>().getHealth(GetComponent<AllyDetection>().getChasingAlly());
+        float enemyHealth = gameObject.GetComponent<EnemyHealth>().getHealth();
+       
 
         while (allyHealth > 0 && enemyHealth > 0 && inCombat)
         {
+            Debug.Log("Enemy Health: " + enemyHealth);
             //if not chasing, exit combat cycle
             isChasing = GetComponent<EnemyMovement>().getIsChasingAlly();
             if (!isChasing)
@@ -51,50 +54,89 @@ public class Combat : MonoBehaviour
             }
 
             //if the unit is "reloaded," do damage
-            if (cooldown > 0)
+            if (cooldown > 0f)
             {
                 cooldown -= Time.deltaTime;
+                yield return null;
             }
-            else if (cooldown <= 0)
+            else //if (cooldown <= 0)
             {
-                Debug.Log("Damage Done");
                 cooldown = maxCooldown;
-                
+                double num = rnd.NextDouble();
                 //ally damage taken
                 if (gameObject.name.Contains("Armor"))
                 {
-                    allyHealth -= armorDamage;
+                    if (num % 2 == 0)
+                    {
+                        allyHealth -= armorDamage + (bufferDamage * (float)num);
+                    }
+                    else
+                    {
+                        allyHealth -= armorDamage - (bufferDamage * (float)num);
+                    }
+                    
 
                 }
                 else if (gameObject.name.Contains("Infantry"))
                 {
-                    allyHealth -= infantryDamage;
+                    if (num % 2 == 0)
+                    {
+                        allyHealth -= infantryDamage + (bufferDamage * (float)num);
+                    }
+                    else
+                    {
+                        allyHealth -= infantryDamage - (bufferDamage * (float)num);
+                    }
 
                 }
                 else if (gameObject.name.Contains("Artillery"))
                 {
-                    allyHealth -= artilleryDamage;
-
+                    if (num % 2 == 0)
+                    {
+                        allyHealth -= artilleryDamage + (bufferDamage * (float)num);
+                    }
+                    else
+                    {
+                        allyHealth -= artilleryDamage - (bufferDamage * (float)num);
+                    }
                 }
 
 
                 //enemy damage taken
                 if (allyUnit.name.Contains("Armor"))
                 {
-                    enemyHealth -= armorDamage;
-                    Debug.Log("Enemy took armor damage and has " + enemyHealth + "health reamaing");
+                    if (num % 2 == 0)
+                    {
+                        enemyHealth -= armorDamage + (bufferDamage * (float)num);
+                    }
+                    else
+                    {
+                        enemyHealth -= armorDamage - (bufferDamage * (float)num);
+                    }
 
                 }
                 else if (allyUnit.name.Contains("Infantry"))
                 {
-                    enemyHealth -= infantryDamage;
-                    Debug.Log("Enemy took infantry damage and has " + enemyHealth + "health reamaing");
+                    if (num % 2 == 0)
+                    {
+                        enemyHealth -= infantryDamage + (bufferDamage * (float)num);
+                    }
+                    else
+                    {
+                        enemyHealth -= infantryDamage - (bufferDamage * (float)num);
+                    }
 
                 }
                 else if (allyUnit.name.Contains("Air"))
                 {
-                    enemyHealth -= airDamage;
-                    Debug.Log("Enemy took air damage and has " + enemyHealth + "health reamaing");
+                    if (num % 2 == 0)
+                    {
+                        enemyHealth -= artilleryDamage + (bufferDamage * (float)num);
+                    }
+                    else
+                    {
+                        enemyHealth -= artilleryDamage - (bufferDamage * (float)num);
+                    }
 
                 }
 
@@ -112,13 +154,15 @@ public class Combat : MonoBehaviour
         }
 
         //check healths
-        if (enemyHealth <= 0)
+        if (enemyHealth <= 0f)
         {
             Debug.Log(gameObject.name + "has died");
             gameObject.GetComponent<EnemyAppearance>().hideAllSprites();
             gameObject.SetActive(false);
+
+            exitCombatCycle(false, allyUnit);
         }
-        if (allyHealth <= 0)
+        if (allyHealth <= 0f)
         {
             Debug.Log(allyUnit.name + "has died");
             setAllyDeath(allyUnit);
@@ -135,6 +179,8 @@ public class Combat : MonoBehaviour
         {
             resetAllyButtonColor(allyUnit);
         }
+
+        //gameObject.GetComponent<EnemyMovement>().setChasingAlly(false);
     }
 
     private void setAllyDeath(GameObject unit)
@@ -170,7 +216,7 @@ public class Combat : MonoBehaviour
         button.color = Color.white;
     }
 
-    private void updateHealthTextInButton(string buttonName, string unitName, int newHealth)
+    private void updateHealthTextInButton(string buttonName, string unitName, float newHealth)
     {
         //this section modifies the name to fit the corresponding GameObject name
 
@@ -180,7 +226,9 @@ public class Combat : MonoBehaviour
         else { buttonName = buttonName.Remove(8, 4); }//if the unit is an infantry type
         buttonName += "Button";
 
-        GameObject.Find(buttonName).GetComponentInChildren<TextMeshProUGUI>().text = unitName + "\n\nHealth:\n" + newHealth;
+        if (newHealth < 0f) { newHealth = 0f; }
+
+        GameObject.Find(buttonName).GetComponentInChildren<TextMeshProUGUI>().text = unitName + "\n\nHealth:\n" + (int)Math.Floor(newHealth);
 
     }
 

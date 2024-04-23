@@ -39,10 +39,10 @@ public class SelectUnit : MonoBehaviour
     public InputAction RightClick;
 
     //variables for health bar
-    [SerializeField] private int maxInfantryHealth = 10, maxArmorHealth = 50, maxAirHealth = 25;
+    [SerializeField] private float maxInfantryHealth = 10f, maxArmorHealth = 50f, maxAirHealth = 25f;
     private int numArmorUnits = 4, numInfantryUnits = 6;
     private string[] unitToolbarNames = {"First Armor", "Second Armor", "Third Armor", "Fourth Armor", "1st Infantry", "2nd Infantry", "3rd Infantry", "4th Infantry", "5th Infantry", "6th Infantry"  };
-    private int[] unitHealths;
+    private float[] unitHealths;
     const string textPrefix = "\n\nHealth:\n";
 
     private void Awake()
@@ -52,7 +52,7 @@ public class SelectUnit : MonoBehaviour
         RightClick.Enable();
 
         numUnits = units.Length;
-        unitHealths = new int[numUnits];
+        unitHealths = new float[numUnits];
 
         //setting max healths
         int i;
@@ -138,7 +138,7 @@ public class SelectUnit : MonoBehaviour
 
     }
 
-    public int getUnitHealth(GameObject allyUnit)
+    public float getUnitHealth(GameObject allyUnit)
     {
         string unit = allyUnit.name;
         int i = 0;
@@ -151,7 +151,7 @@ public class SelectUnit : MonoBehaviour
         return -1;
     }
 
-    public int getUnitHealth(int index)
+    public float getUnitHealth(int index)
     {
         return unitHealths[index];
     }
@@ -177,12 +177,13 @@ public class SelectUnit : MonoBehaviour
             {
                 return unitToolbarNames[i];
             }
+            i++;
         }
 
         return null;
     }
 
-    public void setUnitHealth(int index, int newHealth)
+    public void setUnitHealth(int index, float newHealth)
     {
         unitHealths[index] = newHealth;
     }

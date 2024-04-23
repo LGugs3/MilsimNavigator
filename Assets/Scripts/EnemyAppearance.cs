@@ -14,17 +14,25 @@ public class EnemyAppearance : MonoBehaviour
         gameObject.GetComponent<Renderer>().enabled = true;
         if (gameObject.transform.Find("Armor") != null)
         {
-            gameObject.transform.Find("Armor").GetComponent<Renderer>().enabled = true;
+            gameObject.transform.Find("Armor").GetComponent<Renderer>().enabled = false;
 
+        }
+        else if (gameObject.transform.Find("Infantry") != null)
+        {
+            gameObject.transform.Find("Infantry").GetComponent<Renderer>().enabled = false;
+
+        }
+        else if (gameObject.transform.Find("Artillery") != null)
+        {
+            gameObject.transform.Find("Artillery").GetComponent<Renderer>().enabled = false;
         }
         else
         {
-            gameObject.transform.Find("Infantry").GetComponent<Renderer>().enabled = true;
-
+            gameObject.transform.Find("SAM").GetComponent<Renderer>().enabled = false;
         }
 
-        gameObject.transform.Find("Blip").GetComponent <Renderer>().enabled = false;
-        unitSeen = true;//after testing change to false
+        gameObject.transform.Find("Blip").GetComponent <Renderer>().enabled = true;
+        unitSeen = false;
         unitScouted = false;
 
     }
@@ -72,10 +80,18 @@ public class EnemyAppearance : MonoBehaviour
             gameObject.transform.Find("Armor").GetComponent<Renderer>().enabled = false;
 
         }
-        else
+        else if (gameObject.transform.Find("Infantry") != null)
         {
             gameObject.transform.Find("Infantry").GetComponent<Renderer>().enabled = false;
 
+        }
+        else if (gameObject.transform.Find("Artillery") != null)
+        {
+            gameObject.transform.Find("Artillery").GetComponent<Renderer>().enabled = false;
+        }
+        else
+        {
+            gameObject.transform.Find("SAM").GetComponent<Renderer>().enabled = false;
         }
     }
 
@@ -86,11 +102,20 @@ public class EnemyAppearance : MonoBehaviour
             gameObject.transform.Find("Armor").GetComponent<Renderer>().enabled = true;
 
         }
-        else
+        else if (gameObject.transform.Find("Infantry") != null)
         {
             gameObject.transform.Find("Infantry").GetComponent<Renderer>().enabled = true;
 
         }
+        else if (gameObject.transform.Find("Artillery") != null)
+        {
+            gameObject.transform.Find("Artillery").GetComponent<Renderer>().enabled = true;
+        }
+        else
+        {
+            gameObject.transform.Find("SAM").GetComponent<Renderer>().enabled = true;
+        }
+
         gameObject.transform.Find("Blip").GetComponent<Renderer>().enabled = false;
     }
 
@@ -98,10 +123,12 @@ public class EnemyAppearance : MonoBehaviour
     {
         if (closestUnit > seenDistance)
         {
+            unitSeen = false;
             hideFullSprite();
         }
         else
         {
+            unitSeen = true;
             showFullSprite();
         }
     }
@@ -113,11 +140,20 @@ public class EnemyAppearance : MonoBehaviour
             gameObject.transform.Find("Armor").GetComponent<Renderer>().enabled = false;
 
         }
-        else
+        else if (gameObject.transform.Find("Infantry") != null)
         {
             gameObject.transform.Find("Infantry").GetComponent<Renderer>().enabled = false;
 
         }
+        else if (gameObject.transform.Find("Artillery") != null)
+        {
+            gameObject.transform.Find("Artillery").GetComponent<Renderer>().enabled = false;
+        }
+        else
+        {
+            gameObject.transform.Find("SAM").GetComponent<Renderer>().enabled = false;
+        }
+
         gameObject.transform.Find("Blip").GetComponent<Renderer>().enabled = false;
         gameObject.GetComponent<Renderer>().enabled = false;
 
