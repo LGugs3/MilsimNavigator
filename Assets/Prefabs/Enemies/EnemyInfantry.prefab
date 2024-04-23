@@ -161,11 +161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ad51e4a28760041a52f5e90c6de6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infantryDamage: 2
-  armorDamage: 5
-  airDamage: 15
-  artilleryDamage: 0
-  maxCooldown: 2
+  infantryDamage: 4
+  armorDamage: 7
+  airDamage: 17
+  artilleryDamage: 12
+  maxCooldown: 1.5
+  combatingUnits: []
 --- !u!114 &2943056845345046074
 MonoBehaviour:
   m_ObjectHideFlags: 0

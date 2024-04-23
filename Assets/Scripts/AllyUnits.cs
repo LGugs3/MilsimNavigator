@@ -56,6 +56,11 @@ public class AllyUnits : MonoBehaviour
         return -1;
     }
 
+    public void changeHealth(GameObject unit, float amount)
+    {
+        setAllyHealth(unit.name, (getHealth(unit) + amount));
+    }
+
     public int getNumUnits()
     {
         return units.Length;

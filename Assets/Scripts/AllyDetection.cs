@@ -33,6 +33,8 @@ public class AllyDetection : MonoBehaviour
     private void OnTriggerStay2D(Collider2D collision)
     {
         if (!enemyMovement.getIsChasingAlly()) { return; }//prevents collider from checking enemy unit while there is no ally unit in collision box
+        if (!collision.gameObject.name.Contains("Allied")) { return; }//enemy unit
+
         if (collision.gameObject.name == enemyToChase.name)
         {            
             float distance = Vector3.Distance(enemyToChase.transform.position, gameObject.transform.position);
@@ -49,8 +51,8 @@ public class AllyDetection : MonoBehaviour
             {
                 if (!gameObject.GetComponent<Combat>().getInCombat())
                 {
-                    Debug.Log("Stating combat");
-                    gameObject.GetComponent<Combat>().beginCombatCycle();
+                    Debug.Log(gameObject.name + " starting combat against " + enemyToChase.name);
+                    gameObject.GetComponent<Combat>().beginCombatCycle(enemyToChase);
 
                 }
             }
@@ -62,6 +64,16 @@ public class AllyDetection : MonoBehaviour
             }
             
 
+        }
+        else
+        {
+            float distance = Vector3.Distance(enemyToChase.transform.position, gameObject.transform.position);
+
+            if (distance < engageDistance - bufferDistance)
+            {
+                Debug.Log("Another combat of " + gameObject.name + " starting against" + collision.gameObject.name);
+                gameObject.GetComponent<Combat>().beginCombatCycle(collision.gameObject);
+            }
         }
     }
 

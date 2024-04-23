@@ -1014,11 +1014,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ad51e4a28760041a52f5e90c6de6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infantryDamage: 2
-  armorDamage: 5
-  airDamage: 15
-  artilleryDamage: 5
-  maxCooldown: 2
+  infantryDamage: 4
+  armorDamage: 7
+  airDamage: 17
+  artilleryDamage: 12
+  maxCooldown: 3
+  combatingUnits: []
 --- !u!114 &493208526
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4462,10 +4463,6 @@ PrefabInstance:
     - target: {fileID: 4791886144129928552, guid: 3fd7a4a27e541c641836632c4ead8c57, type: 3}
       propertyPath: m_Name
       value: AlliedArmorUnit1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4791886144129928552, guid: 3fd7a4a27e541c641836632c4ead8c57, type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
