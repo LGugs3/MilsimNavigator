@@ -7,10 +7,10 @@ public class AllyUnits : MonoBehaviour
     public static AllyUnits Instance;
 
     public GameObject unitScriptHolder;
-    SelectUnit unitSelector;
-    GameObject[] units;
-    float[] healths;
-    int numUnits;
+    private SelectUnit unitSelector;
+    private GameObject[] units;
+    private float[] healths;
+    private int numUnits;
 
     private void Start()
     {
@@ -50,15 +50,19 @@ public class AllyUnits : MonoBehaviour
         {
             if (units[i].name == unit.name)
             {
+                if (healths[i]  < 0f)
+                {
+                    return 0f;
+                }
                 return healths[i];
             }
         }
-        return -1;
+        return -1f;
     }
 
     public void changeHealth(GameObject unit, float amount)
     {
-        setAllyHealth(unit.name, (getHealth(unit) + amount));
+        changeAllyHealth(unit.name,amount);
     }
 
     public int getNumUnits()
@@ -88,5 +92,19 @@ public class AllyUnits : MonoBehaviour
         }
 
         healths[i] = newHealth;
+    }
+
+    public void changeAllyHealth(string unitName, float amount)
+    {
+        int i;
+        for (i = 0; i < units.Length; i++)
+        {
+            if (units[i].name == unitName) { break; }
+        }
+
+        healths[i] += amount;
+        Debug.Log("ally unit changed health to " + healths[i]);
+
+        
     }
 }

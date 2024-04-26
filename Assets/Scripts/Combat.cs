@@ -9,11 +9,12 @@ using UnityEngine.UI;
 public class Combat : MonoBehaviour
 {
     //infantryDamage = 2; armorDamage = 5; airDamage = 15; artilleryDamage = 5; SAM damage instant kill on air
-    [SerializeField] private int infantryDamage, armorDamage, airDamage, artilleryDamage;
+    private static float infantryDamage, armorDamage, airDamage, artilleryDamage;
     [SerializeField] private float maxCooldown;
     private float bufferDamage;
     private bool inCombat;
     float cooldown;
+    private int numCombatInstances;
 
     private bool isChasing;
 
@@ -26,6 +27,14 @@ public class Combat : MonoBehaviour
         inCombat = false;
         bufferDamage = 2f;
 
+        infantryDamage = 2f;
+        armorDamage = 5f;
+        artilleryDamage = 10f;
+        airDamage = 15f;
+
+        numCombatInstances = 0;
+
+        //trying to get the number of units returns a null ref error
         combatingUnits = new List<GameObject>(10 + 1);
         //junk shit so i dont get ref null error
         combatingUnits.Add(gameObject);
@@ -35,9 +44,12 @@ public class Combat : MonoBehaviour
     {
         if (isUnitCombating(allyUnit)) { return; }
         combatingUnits.Add(allyUnit);
+        Debug.Log(allyUnit.name + " has " + GetComponent<AllyUnits>().getHealth(allyUnit) + " health remaining");
+
 
         cooldown = 0;
         inCombat = true;
+        numCombatInstances++;
 
         setButtonColorRed(GetComponent<AllyDetection>().getChasingAlly());
         StartCoroutine(CombatCycle(allyUnit));
@@ -47,8 +59,8 @@ public class Combat : MonoBehaviour
     IEnumerator CombatCycle(GameObject allyUnit)
     {
         System.Random rnd = new System.Random();
-        float allyDamage = 0,
-              enemyDamage = 0,
+        float allyDamage,
+              enemyDamage,
               allyHealth = gameObject.GetComponent<AllyUnits>().getHealth(allyUnit),
               enemyHealth = gameObject.GetComponent<EnemyHealth>().getHealth();
         
@@ -56,6 +68,7 @@ public class Combat : MonoBehaviour
 
         while (allyHealth > 0f && enemyHealth > 0f && inCombat)
         {
+            
             //for multiple instances
             if (getButtonColor(allyUnit) != Color.red)
             {
@@ -76,20 +89,18 @@ public class Combat : MonoBehaviour
             if (cooldown > 0f)
             {
                 cooldown -= Time.deltaTime;
-                yield return null;
             }
             else //if (cooldown <= 0f)
             {
-                //if there are multiple instances of combat cycle going at once, need to reget health every iteration
-                allyHealth = gameObject.GetComponent<AllyUnits>().getHealth(allyUnit);
-                enemyHealth = gameObject.GetComponent<EnemyHealth>().getHealth();
+                allyDamage = 0;
+                enemyDamage = 0;
 
                 cooldown = maxCooldown;
                 double num = rnd.NextDouble();
                 //ally damage taken
                 if (gameObject.name.Contains("Armor"))
                 {
-                    if (num % 2 == 0)
+                    if (Math.Round(num) % 2 == 0)
                     {
                         allyDamage = armorDamage + (bufferDamage * (float)num);
                     }
@@ -102,7 +113,8 @@ public class Combat : MonoBehaviour
                 }
                 else if (gameObject.name.Contains("Infantry"))
                 {
-                    if (num % 2 == 0)
+                    Debug.Log(gameObject.name + " did infantry damage");
+                    if (Math.Round(num) % 2 == 0)
                     {
                         allyDamage = infantryDamage + (bufferDamage * (float)num);
                     }
@@ -114,7 +126,7 @@ public class Combat : MonoBehaviour
                 }
                 else if (gameObject.name.Contains("Artillery"))
                 {
-                    if (num % 2 == 0)
+                    if (Math.Round(num) % 2 == 0)
                     {
                         allyDamage = artilleryDamage + (bufferDamage * (float)num);
                     }
@@ -129,7 +141,8 @@ public class Combat : MonoBehaviour
                 //enemy damage taken
                 if (allyUnit.name.Contains("Armor"))
                 {
-                    if (num % 2 == 0)
+                    Debug.Log("ally unit is an armor type");
+                    if (Math.Round(num) % 2 == 0)
                     {
                         enemyDamage = armorDamage + (bufferDamage * (float)num);
                     }
@@ -141,7 +154,7 @@ public class Combat : MonoBehaviour
                 }
                 else if (allyUnit.name.Contains("Infantry"))
                 {
-                    if (num % 2 == 0)
+                    if (Math.Round(num) % 2 == 0)
                     {
                         enemyDamage = infantryDamage + (bufferDamage * (float)num);
                     }
@@ -153,26 +166,39 @@ public class Combat : MonoBehaviour
                 }
                 else if (allyUnit.name.Contains("Air"))
                 {
-                    if (num % 2 == 0)
+                    if (Math.Round(num) % 2 == 0)
                     {
-                        enemyDamage = artilleryDamage + (bufferDamage * (float)num);
+                        enemyDamage = airDamage + (bufferDamage * (float)num);
                     }
                     else
                     {
-                        enemyDamage = artilleryDamage - (bufferDamage * (float)num);
+                        enemyDamage = airDamage - (bufferDamage * (float)num);
                     }
 
                 }
 
+                //damage needs to be negative
                 allyDamage *= -1;
                 enemyDamage *= -1;
-                gameObject.GetComponent<AllyUnits>().changeHealth(allyUnit, enemyDamage);
+                if (enemyDamage > 0) { enemyDamage = 0; }
+                if (allyDamage > 0) { allyDamage = 0; }
+                //the more units a unit is fighting at the same time the less damage the unit does to each unit
+                allyDamage /= numCombatInstances;
+                enemyDamage /= numCombatInstances;
+
+                Debug.Log("Damage done to ally unit " + enemyDamage);
+                gameObject.GetComponent<AllyUnits>().changeHealth(allyUnit, allyDamage);
 
                 //update ally health on button
                 updateHealthTextInButton(allyUnit.name, gameObject.GetComponent<AllyUnits>().regetToolbarName(allyUnit.name),
-                                         GetComponent<AllyUnits>().getHealth(allyUnit));
+                                         allyUnit);
 
-                GetComponent<EnemyHealth>().changeHealth(allyDamage);
+                GetComponent<EnemyHealth>().changeHealth(enemyDamage);
+
+
+                //if there are multiple instances of combat cycle going at once, need to reget health every iteration
+                allyHealth = gameObject.GetComponent<AllyUnits>().getHealth(allyUnit);
+                enemyHealth = gameObject.GetComponent<EnemyHealth>().getHealth();
 
             }
 
@@ -180,17 +206,25 @@ public class Combat : MonoBehaviour
         }
 
         //check healths
-        if (enemyDamage <= 0f)
+        if (enemyHealth <= 0f)
         {
-            Debug.Log(gameObject.name + "has died");
+            Debug.Log(gameObject.name + " has died");
             gameObject.GetComponent<EnemyAppearance>().hideAllSprites();
             gameObject.SetActive(false);
 
-            exitCombatCycle(false, allyUnit);
+            //in case they kill each other
+            if (allyHealth <= 0f)
+            {
+                exitCombatCycle(true, allyUnit);
+            }
+            else
+            {
+                exitCombatCycle(false, allyUnit);
+            }
         }
-        if (allyDamage <= 0f)
+        if (allyHealth <= 0f)
         {
-            Debug.Log(allyUnit.name + "has died");
+            Debug.Log(allyUnit.name + " has died");
             setAllyDeath(allyUnit);
 
             exitCombatCycle(true, allyUnit);
@@ -200,6 +234,8 @@ public class Combat : MonoBehaviour
     public void exitCombatCycle(bool isAllyDead, GameObject allyUnit)
     {
         inCombat = false;
+        numCombatInstances--;
+        if (numCombatInstances < 0) { numCombatInstances = 0; }
 
         if (!isAllyDead)
         {
@@ -211,7 +247,6 @@ public class Combat : MonoBehaviour
             combatingUnits.Remove(allyUnit);
         }
 
-        //gameObject.GetComponent<EnemyMovement>().setChasingAlly(false);
     }
 
     private void setAllyDeath(GameObject unit)
@@ -248,7 +283,7 @@ public class Combat : MonoBehaviour
         button.color = Color.white;
     }
 
-    private void updateHealthTextInButton(string buttonName, string unitName, float newHealth)
+    private void updateHealthTextInButton(string buttonName, string unitName, GameObject unit)
     {
         //this section modifies the name to fit the corresponding GameObject name
 
@@ -258,9 +293,9 @@ public class Combat : MonoBehaviour
         else { buttonName = buttonName.Remove(8, 4); }//if the unit is an infantry type
         buttonName += "Button";
 
-        if (newHealth < 0f) { newHealth = 0f; }
-
-        GameObject.Find(buttonName).GetComponentInChildren<TextMeshProUGUI>().text = unitName + "\n\nHealth:\n" + (int)Math.Floor(newHealth);
+        Debug.Log("setting ally health to " + Math.Ceiling(GetComponent<AllyUnits>().getHealth(unit)));
+        GameObject.Find(buttonName).GetComponentInChildren<TextMeshProUGUI>().text = unitName + "\n\nHealth:\n" +
+                                                    (int)Math.Ceiling(GetComponent<AllyUnits>().getHealth(unit));
 
     }
 

@@ -161,10 +161,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2ad51e4a28760041a52f5e90c6de6f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infantryDamage: 4
-  armorDamage: 7
-  airDamage: 17
-  artilleryDamage: 12
   maxCooldown: 2
   combatingUnits: []
 --- !u!114 &8406855480638156624
@@ -179,7 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82c58e3175530cb4abf40cbd8f80b621, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 25
+  health: 50
 --- !u!58 &6250117840892427824
 CircleCollider2D:
   m_ObjectHideFlags: 0
