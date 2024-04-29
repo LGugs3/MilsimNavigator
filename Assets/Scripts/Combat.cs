@@ -18,9 +18,9 @@ public class Combat : MonoBehaviour
 
     private bool isChasing;
 
-    [SerializeField] private List<GameObject> combatingUnits;
+    private List<GameObject> combatingUnits;
 
-    private void Awake()
+    private void Start()
     {
         cooldown = maxCooldown;
         isChasing = GetComponent<EnemyMovement>().getIsChasingAlly();
@@ -113,7 +113,6 @@ public class Combat : MonoBehaviour
                 }
                 else if (gameObject.name.Contains("Infantry"))
                 {
-                    Debug.Log(gameObject.name + " did infantry damage");
                     if (Math.Round(num) % 2 == 0)
                     {
                         allyDamage = infantryDamage + (bufferDamage * (float)num);
@@ -141,7 +140,6 @@ public class Combat : MonoBehaviour
                 //enemy damage taken
                 if (allyUnit.name.Contains("Armor"))
                 {
-                    Debug.Log("ally unit is an armor type");
                     if (Math.Round(num) % 2 == 0)
                     {
                         enemyDamage = armorDamage + (bufferDamage * (float)num);
@@ -180,18 +178,17 @@ public class Combat : MonoBehaviour
                 //damage needs to be negative
                 allyDamage *= -1;
                 enemyDamage *= -1;
-                if (enemyDamage > 0) { enemyDamage = 0; }
-                if (allyDamage > 0) { allyDamage = 0; }
+                if (enemyDamage > 0f) { enemyDamage = 0f; }
+                if (allyDamage > 0f) { allyDamage = 0f; }
                 //the more units a unit is fighting at the same time the less damage the unit does to each unit
                 allyDamage /= numCombatInstances;
                 enemyDamage /= numCombatInstances;
 
-                Debug.Log("Damage done to ally unit " + enemyDamage);
                 gameObject.GetComponent<AllyUnits>().changeHealth(allyUnit, allyDamage);
 
                 //update ally health on button
-                updateHealthTextInButton(allyUnit.name, gameObject.GetComponent<AllyUnits>().regetToolbarName(allyUnit.name),
-                                         allyUnit);
+                //updateHealthTextInButton(allyUnit.name, gameObject.GetComponent<AllyUnits>().regetToolbarName(allyUnit.name),
+                //                         allyUnit);
 
                 GetComponent<EnemyHealth>().changeHealth(enemyDamage);
 
@@ -283,21 +280,21 @@ public class Combat : MonoBehaviour
         button.color = Color.white;
     }
 
-    private void updateHealthTextInButton(string buttonName, string unitName, GameObject unit)
-    {
-        //this section modifies the name to fit the corresponding GameObject name
+    //private void updateHealthTextInButton(string buttonName, string unitName, GameObject unit)
+    //{
+    //    //this section modifies the name to fit the corresponding GameObject name
 
-        buttonName = buttonName.Remove(0, 6); //removes "Allied" from string
-        //removes "Unit" from string
-        if (buttonName.Length == 10) { buttonName = buttonName.Remove(5, 4); }//if the unit is an armor type
-        else { buttonName = buttonName.Remove(8, 4); }//if the unit is an infantry type
-        buttonName += "Button";
+    //    buttonName = buttonName.Remove(0, 6); //removes "Allied" from string
+    //    //removes "Unit" from string
+    //    if (buttonName.Length == 10) { buttonName = buttonName.Remove(5, 4); }//if the unit is an armor type
+    //    else { buttonName = buttonName.Remove(8, 4); }//if the unit is an infantry type
+    //    buttonName += "Button";
 
-        Debug.Log("setting ally health to " + Math.Ceiling(GetComponent<AllyUnits>().getHealth(unit)));
-        GameObject.Find(buttonName).GetComponentInChildren<TextMeshProUGUI>().text = unitName + "\n\nHealth:\n" +
-                                                    (int)Math.Ceiling(GetComponent<AllyUnits>().getHealth(unit));
+    //    Debug.Log("setting ally health to " + Math.Ceiling(GetComponent<AllyUnits>().getHealth(unit)));
+    //    GameObject.Find(buttonName).GetComponentInChildren<TextMeshProUGUI>().text = unitName + "\n\nHealth:\n" +
+    //                                                (int)Math.Ceiling(GetComponent<AllyUnits>().getHealth(unit));
 
-    }
+    //}
 
     public bool getInCombat()
     {

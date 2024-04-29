@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|c:\\users\\liamg\\onedrive\\desktop\\technology sandbox\\milsim navigator\\milsim navigator\\assets\\scripts\\allyunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\allyunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\assets\\scripts\\allydetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\allydetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|c:\\users\\liamg\\onedrive\\desktop\\technology sandbox\\milsim navigator\\milsim navigator\\assets\\scripts\\combat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\assets\\scripts\\combat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\combat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\assets\\scripts\\allydetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\allydetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|c:\\users\\liamg\\onedrive\\desktop\\technology sandbox\\milsim navigator\\milsim navigator\\assets\\scripts\\allyunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\allyunits.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\assets\\scripts\\enemyappearance.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -30,21 +30,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AllyUnits.cs",
-              "DocumentMoniker": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\AllyUnits.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\AllyUnits.cs",
-              "ToolTip": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\AllyUnits.cs",
-              "RelativeToolTip": "Assets\\Scripts\\AllyUnits.cs",
-              "ViewState": "AQIAABMAAAAAAAAAAAAQwDsAAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-26T16:22:57.09Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
@@ -59,26 +46,39 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AllyUnits.cs",
+              "DocumentMoniker": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\AllyUnits.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AllyUnits.cs",
+              "ToolTip": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\AllyUnits.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AllyUnits.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-26T16:22:57.09Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Combat.cs",
               "DocumentMoniker": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\Combat.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Combat.cs",
               "ToolTip": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\Combat.cs",
               "RelativeToolTip": "Assets\\Scripts\\Combat.cs",
-              "ViewState": "AQIAAPMAAAAAAAAAAAAvwCQAAABEAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-16T15:19:56.935Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "AllyDetection.cs",
               "DocumentMoniker": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\AllyDetection.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\AllyDetection.cs",
               "ToolTip": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\AllyDetection.cs",
               "RelativeToolTip": "Assets\\Scripts\\AllyDetection.cs",
-              "ViewState": "AQIAAB4AAAAAAAAAAAAYwDYAAABGAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAdAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-14T16:46:00.073Z",
               "EditorCaption": ""
@@ -93,8 +93,7 @@
               "RelativeToolTip": "Assets\\Scripts\\EnemyMovement.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAKMAAAAsAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-05T16:22:21.222Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-05T16:22:21.222Z"
             },
             {
               "$type": "Document",
@@ -104,7 +103,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyAppearance.cs",
               "ToolTip": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\EnemyAppearance.cs",
               "RelativeToolTip": "Assets\\Scripts\\EnemyAppearance.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAAACIAAAAZAAAA",
+              "ViewState": "AQIAACIAAAAAAAAAAAAAADgAAABLAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-09T15:50:11.478Z",
               "EditorCaption": ""

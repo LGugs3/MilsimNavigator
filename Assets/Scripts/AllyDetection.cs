@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class AllyDetection : MonoBehaviour
 {
-    [SerializeField] float engageDistance, bufferDistance;
-    EnemyMovement enemyMovement;
-    GameObject enemyToChase;
+    [SerializeField] private float engageDistance, bufferDistance;
+    private EnemyMovement enemyMovement;
+    private GameObject enemyToChase;
 
     float speed;
     float rotationSpeed = 720;

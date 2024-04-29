@@ -1015,7 +1015,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxCooldown: 3
-  combatingUnits: []
 --- !u!114 &493208526
 MonoBehaviour:
   m_ObjectHideFlags: 0

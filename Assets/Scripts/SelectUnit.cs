@@ -39,13 +39,13 @@ public class SelectUnit : MonoBehaviour
     public InputAction RightClick;
 
     //variables for health bar
-    private float maxInfantryHealth = 20f, maxArmorHealth = 50f, maxAirHealth = 25f;
-    private int numArmorUnits = 4, numInfantryUnits = 6;
-    private string[] unitToolbarNames = {"First Armor", "Second Armor", "Third Armor", "Fourth Armor", "1st Infantry", "2nd Infantry", "3rd Infantry", "4th Infantry", "5th Infantry", "6th Infantry"  };
+    private float maxInfantryHealth = 25f, maxArmorHealth = 50f;
+    private int numArmorUnits = 4;
+    private string[] unitToolbarNames = { "First Armor", "Second Armor", "Third Armor", "Fourth Armor", "1st Infantry", "2nd Infantry", "3rd Infantry", "4th Infantry", "5th Infantry", "6th Infantry" };
     private float[] unitHealths;
     const string textPrefix = "\n\nHealth:\n";
 
-    private void Awake()
+    private void Start()
     {
         Instance = this;
 
@@ -66,8 +66,8 @@ public class SelectUnit : MonoBehaviour
             buttonName = unit.ToString();
 
             //sets initial health of units
-            if (i > numArmorUnits) { updateHealthTextInButton(buttonName, unitToolbarNames[i], "25"); }
-            else { updateHealthTextInButton(buttonName, unitToolbarNames[i], "50"); }
+            if (i > numArmorUnits) { updateHealthTextInButton(buttonName, unitToolbarNames[i], maxInfantryHealth.ToString()); }
+            else { updateHealthTextInButton(buttonName, unitToolbarNames[i], maxArmorHealth.ToString()); }
             i++;
         }
     }
