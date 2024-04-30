@@ -54,7 +54,7 @@ public class AlliedMovement : MonoBehaviour
             isCooldown = true;
 
             isMoving = false;
-            moveUnit = SelectUnit.Instance.getSelectedUnit();
+            moveUnit = SelectUnit.Instance.getSelectedMoveUnit();
             for (int i = 0; i < currentMovingUnits.Length; i++)
             {
                 if (moveUnit == currentMovingUnits[i])
@@ -150,7 +150,7 @@ public class AlliedMovement : MonoBehaviour
                         Array.Copy(tempArr, currentMovingUnits, tempArr.Length);
 
                         //deselecting unit once it reaches its destination
-                        SelectUnit.Instance.resetSelectedUnit(unit);
+                        SelectUnit.Instance.resetSelectedMoveUnit(unit);
                         break;
                     }
                 }

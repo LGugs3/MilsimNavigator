@@ -65,6 +65,8 @@
     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\EnemyMovement.cs" />
     <Compile Include="Assets\Scripts\Combat.cs" />
+    <Compile Include="Assets\Scripts\Airstrike.cs" />
+    <Compile Include="Assets\Scripts\EffectiveAirstrikeRadius.cs" />
     <Compile Include="Assets\Scripts\AllyUnits.cs" />
     <Compile Include="Assets\Scripts\AlliedMovement.cs" />
     <Compile Include="Assets\Scripts\AllyDetection.cs" />

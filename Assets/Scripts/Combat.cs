@@ -44,7 +44,6 @@ public class Combat : MonoBehaviour
     {
         if (isUnitCombating(allyUnit)) { return; }
         combatingUnits.Add(allyUnit);
-        Debug.Log(allyUnit.name + " has " + GetComponent<AllyUnits>().getHealth(allyUnit) + " health remaining");
 
 
         cooldown = 0;
@@ -80,7 +79,6 @@ public class Combat : MonoBehaviour
             isChasing = GetComponent<EnemyMovement>().getIsChasingAlly();
             if (!isChasing)
             {
-                Debug.Log("Exiting combat");
                 exitCombatCycle(false, allyUnit);
                 break;
             }
@@ -205,7 +203,6 @@ public class Combat : MonoBehaviour
         //check healths
         if (enemyHealth <= 0f)
         {
-            Debug.Log(gameObject.name + " has died");
             gameObject.GetComponent<EnemyAppearance>().hideAllSprites();
             gameObject.SetActive(false);
 
@@ -221,7 +218,6 @@ public class Combat : MonoBehaviour
         }
         if (allyHealth <= 0f)
         {
-            Debug.Log(allyUnit.name + " has died");
             setAllyDeath(allyUnit);
 
             exitCombatCycle(true, allyUnit);
@@ -248,7 +244,6 @@ public class Combat : MonoBehaviour
 
     private void setAllyDeath(GameObject unit)
     {
-        Debug.Log("Unit to kill " + unit);
         //formats the game object name to match the button name
         string buttonName = unit.name;
         buttonName = buttonName.Remove(0, 6); //removes "Allied" from string
@@ -257,11 +252,13 @@ public class Combat : MonoBehaviour
         else { buttonName = buttonName.Remove(8, 4); }//if the unit is an infantry type
         buttonName += "Button";
 
+        //gets the gameobject for the button and the button itself
+        GameObject parentButton = GameObject.Find(buttonName);
+        Button button = parentButton.GetComponent<Button>();
 
-        Image button = GameObject.Find(buttonName).GetComponent<Image>();
-
+        //hiding ally unit and changing button to disabled color
         unit.GetComponent<Renderer>().enabled = false;
-        button.color = Color.black;
+        button.interactable = false;
     }
 
     private void resetAllyButtonColor(GameObject unit)
@@ -279,22 +276,6 @@ public class Combat : MonoBehaviour
 
         button.color = Color.white;
     }
-
-    //private void updateHealthTextInButton(string buttonName, string unitName, GameObject unit)
-    //{
-    //    //this section modifies the name to fit the corresponding GameObject name
-
-    //    buttonName = buttonName.Remove(0, 6); //removes "Allied" from string
-    //    //removes "Unit" from string
-    //    if (buttonName.Length == 10) { buttonName = buttonName.Remove(5, 4); }//if the unit is an armor type
-    //    else { buttonName = buttonName.Remove(8, 4); }//if the unit is an infantry type
-    //    buttonName += "Button";
-
-    //    Debug.Log("setting ally health to " + Math.Ceiling(GetComponent<AllyUnits>().getHealth(unit)));
-    //    GameObject.Find(buttonName).GetComponentInChildren<TextMeshProUGUI>().text = unitName + "\n\nHealth:\n" +
-    //                                                (int)Math.Ceiling(GetComponent<AllyUnits>().getHealth(unit));
-
-    //}
 
     public bool getInCombat()
     {

@@ -8,6 +8,7 @@ TagManager:
   - Button
   - EnemyUnit
   - AllyUnit
+  - SAMTurret
   layers:
   - Default
   - TransparentFX

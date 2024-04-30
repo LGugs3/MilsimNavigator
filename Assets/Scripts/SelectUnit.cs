@@ -8,7 +8,6 @@ using UnityEditor;
 using UnityEngine.InputSystem;
 
 
-
 public enum UNIT
 {
     AlliedArmorUnit1,
@@ -23,17 +22,13 @@ public enum UNIT
     AlliedInfantryUnit6
 }
 
-
-
-
-
 public class SelectUnit : MonoBehaviour
 {
     public static SelectUnit Instance;
     
     //variables for unit selection
     public GameObject[] units;
-    GameObject selectedUnit;
+    GameObject selectedMoveUnit;
     int numUnits;
 
     public InputAction RightClick;
@@ -76,27 +71,27 @@ public class SelectUnit : MonoBehaviour
     {
         if (RightClick.IsPressed())
         {
-            resetSelectedUnit(selectedUnit);
+            resetSelectedMoveUnit(selectedMoveUnit);
         }
     }
 
     //selects unit
-    public void selectArmor1() { if (unitHealths[(int)UNIT.AlliedArmorUnit1] > 0) { selectedUnit = units[(int)UNIT.AlliedArmorUnit1]; } }
-    public void selectArmor2() { if (unitHealths[(int)UNIT.AlliedArmorUnit2] > 0) { selectedUnit = units[(int)UNIT.AlliedArmorUnit2]; } }
-    public void selectArmor3() { if (unitHealths[(int)UNIT.AlliedArmorUnit3] > 0) { selectedUnit = units[(int)UNIT.AlliedArmorUnit3]; } }
-    public void selectArmor4() { if (unitHealths[(int)UNIT.AlliedArmorUnit4] > 0) { selectedUnit = units[(int)UNIT.AlliedArmorUnit4]; } }
-    public void selectInfantry1() { if (unitHealths[(int)UNIT.AlliedInfantryUnit1] > 0) { selectedUnit = units[(int)UNIT.AlliedInfantryUnit1]; } }
-    public void selectInfantry2() { if (unitHealths[(int)UNIT.AlliedInfantryUnit2] > 0) { selectedUnit = units[(int)UNIT.AlliedInfantryUnit2]; } }
-    public void selectInfantry3() { if (unitHealths[(int)UNIT.AlliedInfantryUnit3] > 0) { selectedUnit = units[(int)UNIT.AlliedInfantryUnit3]; } }
-    public void selectInfantry4() { if (unitHealths[(int)UNIT.AlliedInfantryUnit4] > 0) { selectedUnit = units[(int)UNIT.AlliedInfantryUnit4]; } }
-    public void selectInfantry5() { if (unitHealths[(int)UNIT.AlliedInfantryUnit5] > 0) { selectedUnit = units[(int)UNIT.AlliedInfantryUnit5]; } }
-    public void selectInfantry6() { if (unitHealths[(int)UNIT.AlliedInfantryUnit6] > 0) { selectedUnit = units[(int)UNIT.AlliedInfantryUnit6]; } }
+    public void selectArmor1() { if (unitHealths[(int)UNIT.AlliedArmorUnit1] > 0) { selectedMoveUnit = units[(int)UNIT.AlliedArmorUnit1]; } }
+    public void selectArmor2() { if (unitHealths[(int)UNIT.AlliedArmorUnit2] > 0) { selectedMoveUnit = units[(int)UNIT.AlliedArmorUnit2]; } }
+    public void selectArmor3() { if (unitHealths[(int)UNIT.AlliedArmorUnit3] > 0) { selectedMoveUnit = units[(int)UNIT.AlliedArmorUnit3]; } }
+    public void selectArmor4() { if (unitHealths[(int)UNIT.AlliedArmorUnit4] > 0) { selectedMoveUnit = units[(int)UNIT.AlliedArmorUnit4]; } }
+    public void selectInfantry1() { if (unitHealths[(int)UNIT.AlliedInfantryUnit1] > 0) { selectedMoveUnit = units[(int)UNIT.AlliedInfantryUnit1]; } }
+    public void selectInfantry2() { if (unitHealths[(int)UNIT.AlliedInfantryUnit2] > 0) { selectedMoveUnit = units[(int)UNIT.AlliedInfantryUnit2]; } }
+    public void selectInfantry3() { if (unitHealths[(int)UNIT.AlliedInfantryUnit3] > 0) { selectedMoveUnit = units[(int)UNIT.AlliedInfantryUnit3]; } }
+    public void selectInfantry4() { if (unitHealths[(int)UNIT.AlliedInfantryUnit4] > 0) { selectedMoveUnit = units[(int)UNIT.AlliedInfantryUnit4]; } }
+    public void selectInfantry5() { if (unitHealths[(int)UNIT.AlliedInfantryUnit5] > 0) { selectedMoveUnit = units[(int)UNIT.AlliedInfantryUnit5]; } }
+    public void selectInfantry6() { if (unitHealths[(int)UNIT.AlliedInfantryUnit6] > 0) { selectedMoveUnit = units[(int)UNIT.AlliedInfantryUnit6]; } }
 
     //gets current selected unit
-    public GameObject getSelectedUnit() { return selectedUnit; }
+    public GameObject getSelectedMoveUnit() { return selectedMoveUnit; }
 
     //deselecting unit
-    public void resetSelectedUnit(GameObject unitToReset) {if (selectedUnit == unitToReset) { selectedUnit = null; }}
+    public void resetSelectedMoveUnit(GameObject unitToReset) {if (selectedMoveUnit == unitToReset) { selectedMoveUnit = null; }}
 
     public void changeHealth(GameObject unit, int healthValue)
     {

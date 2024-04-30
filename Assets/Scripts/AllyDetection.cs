@@ -51,7 +51,6 @@ public class AllyDetection : MonoBehaviour
             {
                 if (!gameObject.GetComponent<Combat>().getInCombat())
                 {
-                    Debug.Log(gameObject.name + " starting combat against " + enemyToChase.name);
                     gameObject.GetComponent<Combat>().beginCombatCycle(enemyToChase);
 
                 }
@@ -59,7 +58,6 @@ public class AllyDetection : MonoBehaviour
 
             if (distance > engageDistance)
             {
-                Debug.Log("Out of range");
                 gameObject.GetComponent<Combat>().exitCombatCycle(false, enemyToChase);
             }
             
@@ -71,7 +69,6 @@ public class AllyDetection : MonoBehaviour
 
             if (distance < engageDistance - bufferDistance)
             {
-                Debug.Log("Another combat of " + gameObject.name + " starting against" + collision.gameObject.name);
                 gameObject.GetComponent<Combat>().beginCombatCycle(collision.gameObject);
             }
         }

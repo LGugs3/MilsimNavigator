@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4518933609652539107}
   m_Layer: 6
   m_Name: Blip
-  m_TagString: Untagged
+  m_TagString: EnemyUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

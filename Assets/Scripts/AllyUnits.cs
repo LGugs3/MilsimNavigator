@@ -19,11 +19,10 @@ public class AllyUnits : MonoBehaviour
     private void Start()
     {
         Instance = this;
-
+        
         unitSelector = unitScriptHolder.GetComponent<SelectUnit>();
 
         numUnits = unitSelector.getNumUnits();
-        Debug.Log("number of units: " + numUnits);
         units = new GameObject[numUnits];
         healths = new float[numUnits];
         fillArray();
@@ -116,11 +115,8 @@ public class AllyUnits : MonoBehaviour
         {
             if (units[i].name == unit.name) { break; }
         }
-        Debug.Log("ally unit is: " + units[i].name);
 
         healths[i] += amount;
-        Debug.Log("ally unit changed health to " + healths[i]);
-
         updateHealthTextInButton(unit.name, regetToolbarName(unit.name), unit);
     }
 
@@ -135,7 +131,6 @@ public class AllyUnits : MonoBehaviour
         buttonName += "Button";
         if(GameObject.Find(buttonName) == null ) { Debug.Log("Button not found"); }
 
-        Debug.Log("setting viewable ally health to " + Math.Ceiling(getHealth(unit)));
         GameObject.Find(buttonName).GetComponentInChildren<TextMeshProUGUI>().text = toolbarName + "\n\nHealth:\n" +
                                                     (int)Math.Ceiling(getHealth(unit));
 
