@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1954577299344520945}
   - component: {fileID: 4659243989500958937}
   - component: {fileID: 2885393390147682172}
-  - component: {fileID: -5136176944320471378}
   m_Layer: 7
   m_Name: Allied Air
   m_TagString: AllyUnit
@@ -28,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 6046024554161589752}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.02, y: 3.75, z: 0}
+  m_LocalPosition: {x: 19.63873, y: -0.14504461, z: -5.700012}
   m_LocalScale: {x: 0.2474, y: 0.2613, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -41,7 +40,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6046024554161589752}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -113,35 +112,3 @@ Rigidbody2D:
   m_SleepingMode: 0
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-5136176944320471378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6046024554161589752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1f737017ca781f49b7b933feb0f0cff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectilePrefab: {fileID: 3904804254016342983, guid: 100190253f0eb374890f868bab9562ec, type: 3}
-  LeftClick:
-    m_Name: Left Click
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: da16c18d-325a-4866-b7a8-fe348e59e709
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: bd330824-8bf2-4626-a4bb-4e0278dd5f6b
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Left Click
-      m_Flags: 0
-    m_Flags: 0
-  speed: 0
-  rotationSpeed: 720

@@ -253,11 +253,11 @@ public class Combat : MonoBehaviour
         buttonName += "Button";
 
         //gets the gameobject for the button and the button itself
-        GameObject parentButton = GameObject.Find(buttonName);
-        Button button = parentButton.GetComponent<Button>();
+        GameObject parentObject = GameObject.Find(buttonName);
+        Button button = parentObject.GetComponent<Button>();
 
-        //hiding ally unit and changing button to disabled color
-        unit.GetComponent<Renderer>().enabled = false;
+        //disabling ally unit and changing button to disabled color
+        unit.SetActive(false);
         button.interactable = false;
     }
 

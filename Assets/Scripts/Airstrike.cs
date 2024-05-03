@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Timeline;
+using UnityEngine.UI;
 
 public class Airstrike : MonoBehaviour
 {
@@ -44,9 +46,9 @@ public class Airstrike : MonoBehaviour
         SAMTurrets = GameObject.FindGameObjectsWithTag("SAMTurret");
         SAMTurretRange = 10f;
 
-        strafeDamage = 5f;
-        lightDamage = 15f;
-        heavyDamage = 40f;
+        strafeDamage = -5f;
+        lightDamage = -15f;
+        heavyDamage = -40f;
 
         strafeCooldown = 0f;
         heavyCooldown = 0f;
@@ -59,6 +61,7 @@ public class Airstrike : MonoBehaviour
         cooldown = 0f;
 
         airstrikeInProgress = false;
+        originalTargetMarker.SetActive(false);
     }
 
     private void Update()
@@ -72,13 +75,14 @@ public class Airstrike : MonoBehaviour
             Array.Clear(SAMTurrets, 0, SAMTurrets.Length);
             SAMTurrets = GameObject.FindGameObjectsWithTag("SAMTurret");
 
-            GameObject newTargetMarker = Instantiate(originalTargetMarker, Vector2.up * 0.5f, Quaternion.identity);
             attackPos = mousePos.getWorldPosition();
-            newTargetMarker.transform.position = attackPos;
+            originalTargetMarker.transform.position = attackPos;
+            showMarker(originalTargetMarker);
 
             if (getClosestSAMTurretDistance() < SAMTurretRange)
             {
                 executeFailedAirstrike();
+                deselectOption();
                 return;
             }
 
@@ -86,24 +90,28 @@ public class Airstrike : MonoBehaviour
             switch (airSelection)
             {
                 case 0:
-                    Destroy(newTargetMarker);
+                    hideMarker(originalTargetMarker);
+                    airstrikeInProgress = false;
                     return;
                 case 1:
-                    strafeAttack(newTargetMarker);
+                    strafeAttack(originalTargetMarker);
                     break;
                 case 2:
-                    HeavyAttack(newTargetMarker);
+                    HeavyAttack(originalTargetMarker);
                     break;
                 case 3:
-                    LightAttack(newTargetMarker);
+                    LightAttack(originalTargetMarker);
                     break;
             }
+            deselectOption();
         }
 
         if (strafeCooldown > 0f) { strafeCooldown -= Time.deltaTime; }
         if (heavyCooldown > 0f) { heavyCooldown -= Time.deltaTime; }
         if (lightCooldown > 0f) { lightCooldown -= Time.deltaTime; }
         if (cooldown > 0f) { cooldown -= Time.deltaTime; }
+
+        updateCooldownTextInButton();
     }
 
     private float getClosestSAMTurretDistance()
@@ -128,10 +136,10 @@ public class Airstrike : MonoBehaviour
 
     }
 
-    private void executeSuccessfulAirstrike()
+    private void executeSuccessfulAirstrike(GameObject marker, int attackType)
     {
         float damage = 0f;
-        switch (airSelection)
+        switch (attackType)
         {
             case 0:
                 return;
@@ -139,15 +147,14 @@ public class Airstrike : MonoBehaviour
                 damage = strafeDamage;
                 break;
             case 2:
-                damage = lightDamage;
+                damage = heavyDamage;
                 break;
             case 3:
-                damage = heavyDamage;
+                damage = lightDamage;
                 break;
         }
 
-        GetComponent<EffectiveAirstrikeRadius>().excuteAttack(damage);
-        airstrikeInProgress = false;
+        marker.GetComponent<EffectiveAirstrikeRadius>().excuteAttack(damage);
     }
 
     public void selectStrafeAttack() { airSelection = 1; }
@@ -158,67 +165,77 @@ public class Airstrike : MonoBehaviour
 
     public void selectRecon() { airSelection= 4; }
 
+    public void deselectOption() { airSelection = 0; }
+
     private void strafeAttack(GameObject marker)
     {
         if (strafeCooldown > 0f) { return; }
+        strafeCooldown = maxStrafeCooldown;
 
-        float strafeRadius = 3f;
+        float strafeRadius = 5f;
         marker.GetComponent<CircleCollider2D>().radius = strafeRadius;
 
-        
-    
-
-    airUnit.transform.position = new Vector3(marker.transform.position.x - 20f, marker.transform.position.y);
+        airUnit.transform.position = new Vector3(marker.transform.position.x - 20f, marker.transform.position.y);
         showAirUnit();
 
 
-        StartCoroutine(moveAirUnit(marker));
+        StartCoroutine(moveAirUnit(marker, 1));
 
     }
 
     private void HeavyAttack(GameObject marker)
     {
         if (heavyCooldown > 0f) { return; }
+        heavyCooldown = maxHeavyCooldown;
 
-        float heavyRadius = 1f;
+        float heavyRadius = 2f;
         marker.GetComponent<CircleCollider2D>().radius = heavyRadius;
 
         airUnit.transform.position = new Vector3(marker.transform.position.x - 20f, marker.transform.position.y);
         showAirUnit();
 
-        StartCoroutine(moveAirUnit(marker));
+        StartCoroutine(moveAirUnit(marker, 2));
     }
 
     private void LightAttack(GameObject marker)
     {
         if (lightCooldown > 0f) { return; }
+        lightCooldown = maxLightCooldown;
 
-        float lightRadius = 2f;
+        float lightRadius = 3f;
         marker.GetComponent<CircleCollider2D>().radius = lightRadius;
 
         airUnit.transform.position = new Vector3(marker.transform.position.x - 20f, marker.transform.position.y, marker.transform.position.z);
         showAirUnit();
 
-        StartCoroutine(moveAirUnit(marker));
+        StartCoroutine(moveAirUnit(marker, 3));
     }
 
-    IEnumerator moveAirUnit(GameObject marker)
+    IEnumerator moveAirUnit(GameObject marker, int attackType)
     {
         float speed = 5f;
 
-        bool isXClose = false;
+        bool isXClose = false, attackExecuted = false;
         while (!isXClose)
         {
             airUnit.transform.position = new Vector3(airUnit.transform.position.x + speed * Time.deltaTime, marker.transform.position.y, marker.transform.position.z);
 
-            if (Vector3.Distance(airUnit.transform.position, marker.transform.position) < 0.5f) { executeSuccessfulAirstrike(); }
+            if (Vector3.Distance(airUnit.transform.position, marker.transform.position) < 0.5f)
+            {
+                if (!attackExecuted)
+                {
+                    attackExecuted = true;
+                    executeSuccessfulAirstrike(marker, attackType);
+                }
+            }
 
             if (airUnit.transform.position.x - (marker.transform.position.x + 20f) < 1f && airUnit.transform.position.x - (marker.transform.position.x + 20f) > -1f) { isXClose = true; }
 
             yield return null;
         }
         hideAirUnit();
-        Destroy(marker);
+        hideMarker(marker);
+        airstrikeInProgress = false;
     }
 
     private void hideAirUnit()
@@ -229,5 +246,101 @@ public class Airstrike : MonoBehaviour
     private void showAirUnit()
     {
         airUnit.GetComponent<Renderer>().enabled = true;
+    }
+
+    private void hideMarker(GameObject marker)
+    {
+        marker.SetActive(false);
+    }
+
+    private void showMarker(GameObject marker)
+    {
+        originalTargetMarker.SetActive(true);
+    }
+
+    private void updateCooldownTextInButton()
+    {
+        GameObject parentObject;
+        Button button;
+
+        /*****************************************************************************************************************************
+         * Strafe option
+         *****************************************************************************************************************************/
+        if (strafeCooldown > 0f)
+        {
+            parentObject = GameObject.Find("Strafe");
+            button = parentObject.GetComponent<Button>();
+            
+            ColorBlock colors = button.colors;
+            colors.normalColor = Color.white;
+            button.colors = colors;
+            
+            parentObject.GetComponentInChildren<TextMeshProUGUI>().text = Math.Ceiling(strafeCooldown).ToString();
+            button.interactable = false;
+        }
+        else
+        {
+            parentObject = GameObject.Find("Strafe");
+            button = parentObject.GetComponent<Button>();
+            ColorBlock colors = button.colors;
+            colors.normalColor = Color.green;
+            button.colors = colors;
+
+            parentObject = GameObject.Find("Strafe");
+            parentObject.GetComponentInChildren<TextMeshProUGUI>().text = "Strafe";
+            button.interactable = true;
+        }
+
+        /*****************************************************************************************************************************
+         * Heavy option
+         *****************************************************************************************************************************/
+        if (!Mathf.Approximately(heavyCooldown, 0f) && !(heavyCooldown < 0f))
+        {
+            parentObject = GameObject.Find("Heavy");
+            button = parentObject.GetComponent<Button>();
+
+            ColorBlock colors = button.colors;
+            colors.normalColor = Color.white;
+            button.colors = colors;
+
+            parentObject.GetComponentInChildren<TextMeshProUGUI>().text = Math.Ceiling(heavyCooldown).ToString();
+            button.interactable = false;
+        }
+        else
+        {
+            parentObject = GameObject.Find("Heavy");
+            button = parentObject.GetComponent<Button>();
+            ColorBlock colors = button.colors;
+            colors.normalColor = Color.green;
+            button.colors = colors;
+
+            parentObject = GameObject.Find("Heavy");
+            parentObject.GetComponentInChildren<TextMeshProUGUI>().text = "Heavy";
+            button.interactable = true;
+        }
+
+        /*****************************************************************************************************************************
+         * Light option
+         *****************************************************************************************************************************/
+        if (lightCooldown > 0f)
+        {
+            parentObject = GameObject.Find("Light");
+            button = parentObject.GetComponent<Button>();
+            
+            GameObject.Find("Light").GetComponentInChildren<TextMeshProUGUI>().text = Math.Ceiling(lightCooldown).ToString();
+            button.interactable = false;
+        }
+        else
+        {
+            parentObject = GameObject.Find("Light");
+            button = parentObject.GetComponent<Button>();
+            ColorBlock colors = button.colors;
+            colors.normalColor = Color.green;
+            button.colors = colors;
+
+            parentObject = GameObject.Find("Light");
+            parentObject.GetComponentInChildren<TextMeshProUGUI>().text = "Light";
+            button.interactable = true;
+        }
     }
 }

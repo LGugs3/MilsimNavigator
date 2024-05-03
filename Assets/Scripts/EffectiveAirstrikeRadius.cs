@@ -1,49 +1,84 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class EffectiveAirstrikeRadius : MonoBehaviour
 {
-    List<GameObject> targetsInRange;
+    private List<GameObject> targetsInRange;
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Start()
     {
-        Debug.Log("Enter triggered");
-        Debug.Log(collision.gameObject);
-        int index = targetsInRange.IndexOf(collision.gameObject);
-        if (index == -1)
+        targetsInRange = new List<GameObject>();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (targetsInRange.Count == 0 )
         {
-            Debug.Log("Enter found unit " + collision.gameObject.name);
             targetsInRange.Add(collision.gameObject);
+        }
+        else
+        {
+            int index = targetsInRange.IndexOf(collision.gameObject);
+            if (index == -1)
+            {
+                Debug.Log("Enter found unit " + collision.gameObject.name);
+                targetsInRange.Add(collision.gameObject);
+            }
+        }
+        
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+
+        if (targetsInRange.Count == 0)
+        {
+            targetsInRange.Add(collision.gameObject);
+        }
+        else
+        {
+            int index = targetsInRange.IndexOf(collision.gameObject);
+            if (index == -1)
+            {
+                Debug.Log("Stay found unit " + collision.gameObject.name);
+                targetsInRange.Add(collision.gameObject);
+            }
         }
     }
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("exit triggered");
-
-        Debug.Log(collision.gameObject);
-        int index = targetsInRange.IndexOf(collision.gameObject);
-        if (index  == -1)
+        if (targetsInRange.IndexOf(collision.gameObject) != -1)
         {
-            Debug.Log("Stay found unit " + collision.gameObject.name);
-            targetsInRange.Add(collision.gameObject);
+            Debug.Log(collision.gameObject.name + " has left effective radius");
+            targetsInRange.Remove(collision.gameObject);
         }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-
-        targetsInRange.Remove(collision.gameObject);
     }
 
     public void excuteAttack(float damage)
     {
-        Debug.Log("Damage done");
+        List<GameObject> tmpList = new List<GameObject>();
+
+        if (!targetsInRange.Any()) { return; }
         foreach (GameObject target in targetsInRange)
         {
-            Debug.Log(target.name);
-            GetComponent<AllyUnits>().changeHealth(target, damage);
+            Debug.Log(target.name + " has taken " + damage + " damage");
+            target.GetComponent<EnemyHealth>().changeHealth(damage);
+
+            if (target.GetComponent<EnemyHealth>().getHealth() <= 0)
+            {
+                tmpList.Add(target);
+            }
+        }
+
+        foreach(GameObject target in tmpList)
+        {
+            targetsInRange.Remove(target);
+            target.GetComponent<EnemyAppearance>().hideAllSprites();
+            target.SetActive(false);
         }
     }
 }

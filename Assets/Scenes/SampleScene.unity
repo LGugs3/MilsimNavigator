@@ -432,7 +432,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.92549026, g: 0.92549026, b: 0.92549026, a: 1}
     m_PressedColor: {r: 0.92549026, g: 0.92549026, b: 0.92549026, a: 1}
     m_SelectedColor: {r: 0.9801799, g: 1, b: 0, a: 1}
-    m_DisabledColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+    m_DisabledColor: {r: 0.3137255, g: 0.3137255, b: 0.3137255, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -451,7 +451,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1237328324}
+      - m_Target: {fileID: 1237328327}
         m_TargetAssemblyTypeName: Airstrike, Assembly-CSharp
         m_MethodName: selectStrafeAttack
         m_Mode: 1
@@ -2977,7 +2977,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9801799, g: 1, b: 0, a: 1}
-    m_DisabledColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+    m_DisabledColor: {r: 0.3137255, g: 0.3137255, b: 0.3137255, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -2996,7 +2996,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1237328324}
+      - m_Target: {fileID: 1237328327}
         m_TargetAssemblyTypeName: Airstrike, Assembly-CSharp
         m_MethodName: selectLightAttack
         m_Mode: 1
@@ -3122,10 +3122,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1237328322}
   - component: {fileID: 1237328323}
-  - component: {fileID: 1237328324}
-  - component: {fileID: 1237328327}
   - component: {fileID: 1237328326}
-  - component: {fileID: 1237328325}
+  - component: {fileID: 1237328327}
   m_Layer: 0
   m_Name: AllyUnitScipts
   m_TagString: Untagged
@@ -3188,7 +3186,20 @@ MonoBehaviour:
       m_Action: Right Click
       m_Flags: 0
     m_Flags: 0
---- !u!114 &1237328324
+--- !u!114 &1237328326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237328321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c2d5ad633c7c0d4bbcf7a49efd310e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitScriptHolder: {fileID: 1237328321}
+--- !u!114 &1237328327
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3228,79 +3239,6 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 2bc6b5f9-fe04-4032-b88b-dd10790671c4
-      m_Path: <Mouse>/leftButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Left Click
-      m_Flags: 0
-    m_Flags: 0
-  airUnit: {fileID: 1408944161}
---- !u!114 &1237328325
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237328321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32339c058fd266047a6899a19a398666, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1237328326
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237328321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c2d5ad633c7c0d4bbcf7a49efd310e4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  unitScriptHolder: {fileID: 1237328321}
---- !u!114 &1237328327
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1237328321}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c67b51173a658342806454975a1e938, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  originalTargetMarker: {fileID: 513930355}
-  RightClick:
-    m_Name: Right Click
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: 1133a012-dabc-4942-bbbe-744daa77f6b1
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 278b0d36-677e-4f5e-aeb9-64b940ed3d3d
-      m_Path: <Mouse>/rightButton
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Right Click
-      m_Flags: 0
-    m_Flags: 0
-  LeftClick:
-    m_Name: Left Click
-    m_Type: 1
-    m_ExpectedControlType: Button
-    m_Id: ea892429-40c1-4fc8-956d-0f2037743c0f
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: 
-      m_Id: 9e990c3d-ad6c-4235-92b2-0b66ec480232
       m_Path: <Mouse>/leftButton
       m_Interactions: 
       m_Processors: 
@@ -4139,7 +4077,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9801799, g: 1, b: 0, a: 1}
-    m_DisabledColor: {r: 0.4433962, g: 0.4433962, b: 0.4433962, a: 1}
+    m_DisabledColor: {r: 0.3137255, g: 0.3137255, b: 0.3137255, a: 1}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
@@ -4158,7 +4096,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1237328324}
+      - m_Target: {fileID: 1237328327}
         m_TargetAssemblyTypeName: Airstrike, Assembly-CSharp
         m_MethodName: selectHeavyAttack
         m_Mode: 1
@@ -5386,6 +5324,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2072970131904321394, guid: 8de85929a269045499a0003eb4b1b7d4, type: 3}
+      propertyPath: unitScriptHolder
+      value: 
+      objectReference: {fileID: 1237328321}
     - target: {fileID: 3046073009676774683, guid: 8de85929a269045499a0003eb4b1b7d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -10.02
@@ -5432,7 +5374,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5485627550409784509, guid: 8de85929a269045499a0003eb4b1b7d4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

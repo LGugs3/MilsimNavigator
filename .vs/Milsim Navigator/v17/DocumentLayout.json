@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|c:\\users\\liamg\\onedrive\\desktop\\technology sandbox\\milsim navigator\\milsim navigator\\assets\\scripts\\combat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\combat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|c:\\users\\liamg\\onedrive\\desktop\\technology sandbox\\milsim navigator\\milsim navigator\\assets\\scripts\\airstrike.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\assets\\scripts\\airstrike.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\airstrike.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|c:\\users\\liamg\\onedrive\\desktop\\technology sandbox\\milsim navigator\\milsim navigator\\assets\\scripts\\effectiveairstrikeradius.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\effectiveairstrikeradius.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\assets\\scripts\\combat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\combat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\assets\\scripts\\allydetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A389EC68-A63D-A41A-6508-FDDF78E75AAF}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\allydetection.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,41 +42,54 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
+              "Title": "AllyDetection.cs",
+              "DocumentMoniker": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\AllyDetection.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\AllyDetection.cs",
+              "ToolTip": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\AllyDetection.cs",
+              "RelativeToolTip": "Assets\\Scripts\\AllyDetection.cs",
+              "ViewState": "AQIAAEcAAAAAAAAAAAAwwBQAAAA3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-30T14:47:04.087Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "Combat.cs",
               "DocumentMoniker": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\Combat.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Combat.cs",
               "ToolTip": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\Combat.cs",
               "RelativeToolTip": "Assets\\Scripts\\Combat.cs",
-              "ViewState": "AQIAACIAAAAAAAAAAAAgwGEAAAAjAAAA",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAnwCgAAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-30T04:06:07.701Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EffectiveAirstrikeRadius.cs",
-              "DocumentMoniker": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\EffectiveAirstrikeRadius.cs",
-              "RelativeDocumentMoniker": "Assets\\Scripts\\EffectiveAirstrikeRadius.cs",
-              "ToolTip": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\EffectiveAirstrikeRadius.cs",
-              "RelativeToolTip": "Assets\\Scripts\\EffectiveAirstrikeRadius.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAlAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T02:34:16.329Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Airstrike.cs",
               "DocumentMoniker": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\Airstrike.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\Airstrike.cs",
               "ToolTip": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\Airstrike.cs",
               "RelativeToolTip": "Assets\\Scripts\\Airstrike.cs",
-              "ViewState": "AQIAAJQAAAAAAAAAAAAcwKUAAABGAAAA",
+              "ViewState": "AQIAADgAAAAAAAAAAAAqwFQAAAAhAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-30T01:21:42.655Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EffectiveAirstrikeRadius.cs",
+              "DocumentMoniker": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\EffectiveAirstrikeRadius.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\EffectiveAirstrikeRadius.cs",
+              "ToolTip": "C:\\Users\\liamg\\OneDrive\\Desktop\\Technology Sandbox\\Milsim Navigator\\Milsim Navigator\\Assets\\Scripts\\EffectiveAirstrikeRadius.cs",
+              "RelativeToolTip": "Assets\\Scripts\\EffectiveAirstrikeRadius.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-30T02:34:16.329Z",
               "EditorCaption": ""
             }
           ]

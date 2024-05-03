@@ -9,6 +9,7 @@ TagManager:
   - EnemyUnit
   - AllyUnit
   - SAMTurret
+  - Marker
   layers:
   - Default
   - TransparentFX
